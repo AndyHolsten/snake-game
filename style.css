@@ -19,9 +19,56 @@ h1 {
     border: 2px solid #fff;
 }
 
-#score {
+#gameContainer {
+    position: relative;
+}
+
+#startScreen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#scoreContainer {
     position: absolute;
     bottom: 20px;
     right: 20px;
+    text-align: right;
+}
+
+#score, #highScore {
     font-size: 1.5em;
+    margin-bottom: 5px;
+}
+
+#controls button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+#controls button:hover {
+    background-color: white;
+    color: black;
+}
+
+#controls button.selected {
+    background-color: #f44336; /* Red */
+    color: white;
 } 
