@@ -5,6 +5,7 @@ const highScoreElement = document.getElementById('highScore');
 const easyBtn = document.getElementById('easyBtn');
 const mediumBtn = document.getElementById('mediumBtn');
 const hardBtn = document.getElementById('hardBtn');
+const mattBtn = document.getElementById('mattBtn');
 const startScreen = document.getElementById('startScreen');
 const startBtn = document.getElementById('startBtn');
 
@@ -30,6 +31,7 @@ function updateSelectedButton() {
     easyBtn.classList.remove('selected');
     mediumBtn.classList.remove('selected');
     hardBtn.classList.remove('selected');
+    mattBtn.classList.remove('selected');
 
     // Add selected class to the correct button
     if (gameSpeed == 150) {
@@ -38,6 +40,8 @@ function updateSelectedButton() {
         mediumBtn.classList.add('selected');
     } else if (gameSpeed == 50) {
         hardBtn.classList.add('selected');
+    } else if (gameSpeed == 25) {
+        mattBtn.classList.add('selected');
     }
 }
 
@@ -84,6 +88,12 @@ hardBtn.addEventListener('click', () => {
     updateSelectedButton();
 });
 
+mattBtn.addEventListener('click', () => {
+    localStorage.setItem('gameSpeed', 25);
+    gameSpeed = 25;
+    updateSelectedButton();
+});
+
 // Main game loop function
 function gameLoop() {
     if (paused) {
@@ -103,7 +113,8 @@ function gameLoop() {
             }
             ctx.fillStyle = 'black';
             ctx.font = '50px Arial';
-            ctx.fillText('Game Over', canvas.width / 4, canvas.height / 2);
+            ctx.textAlign = 'center';
+            ctx.fillText('Game Over', canvas.width / 2, canvas.height / 2);
             return; // Stop the game
         }
         changingDirection = false; // Reset the flag at the start of the loop
